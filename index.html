@@ -105,8 +105,39 @@
   <audio id="sfxCorrect" preload="auto" src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACAf39/f4B/f3+AgH9/f3+AgH9/f3+AgH9/f4CAf39/f4CAf39/gIB/f39/gIB/f3+AgH9/f3+AgH9/f3+AgH9/f4B/f39/gH9/f4B/f39/gH9/f4B/f3+AgH9/f4B/f3+AgH9/f4B/f3+AgH9/f4B/f3+AgH9/f4B/f3+AgH9/f4CA"></audio>
   <audio id="sfxLevelUp" preload="auto" src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACAf39/f4B/f3+AgH9/f3+AgH9/f3+AgH9/f4CAf39/f4CAf39/gIB/f39/gIB/f3+AgH9/f3+AgH9/f3+AgH9/f4B/f39/gH9/f4B/f39/gH9/f4B/f3+AgH9/f4B/f3+AgH9/f4B/f3+AgH9/f4B/f3+AgH9/f4B/f3+AgH9/f4CA"></audio>
 
+  <!-- 诊断：捕获并显示JS错误 -->
+  <script>
+    window.__errors = [];
+    window.onerror = function(msg, url, line) {
+      var err = 'Line ' + line + ': ' + msg;
+      window.__errors.push(err);
+      var el = document.getElementById('diag');
+      if (el) { el.textContent = window.__errors.join('\n'); el.style.display = 'block'; }
+    };
+    // 捕获模块加载错误
+    window.addEventListener('error', function(e) {
+      if (e.target && (e.target.tagName === 'SCRIPT' || e.target.tagName === 'LINK')) {
+        window.__errors.push('加载失败: ' + (e.target.src || e.target.href));
+        var el = document.getElementById('diag');
+        if (el) { el.textContent = window.__errors.join('\n'); el.style.display = 'block'; }
+      }
+    }, true);
+    // 检查页面是否卡住
+    setTimeout(function() {
+      var gate = document.getElementById('ageGate');
+      var el = document.getElementById('diag');
+      if (gate && gate.classList.contains('active') && window.__errors.length === 0) {
+        el.textContent = '页面似乎卡住了。请按F12→Console查看错误';
+        el.style.display = 'block';
+      }
+    }, 5000);
+  </script>
+
   <!-- ========== JavaScript 模块 ========== -->
   <script type="module" src="js/app.js"></script>
+
+  <!-- 诊断面板 -->
+  <div id="diag" style="position:fixed;bottom:0;left:0;right:0;background:#ffeb3b;color:red;padding:12px;font-size:12px;z-index:9999;display:none;white-space:pre-line;max-height:120px;overflow:auto;" onclick="this.style.display='none'">.</div>
 
 </body>
 </html>
