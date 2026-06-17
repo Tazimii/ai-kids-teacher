@@ -1,5 +1,5 @@
 (function(){
-'use strict';
+"use strict";
 
 // ====== js/utils.js ======
 /* ============================================
@@ -870,9 +870,9 @@ function rand(min, max) {
    系统提示词构建 + API调用 + 流式响应
    ============================================ */
 
-// --
-// --
-// --
+// [import]
+// [import]
+// [import]
 
 // ============================================================
 //  系统提示词 —— 这是整个项目的质量基石
@@ -1167,9 +1167,9 @@ class AIAgent {
    gamification.js — XP / 等级 / 徽章 / 连续学习
    ============================================ */
 
-// --
-// --
-// --
+// [import]
+// [import]
+// [import]
 
 const Gamification = {
   /** 获取当前等级配置 */
@@ -1698,17 +1698,14 @@ function getAllLessons() {
    串联所有模块，管理应用生命周期
    ============================================ */
 
-// --
-// --
-// --
-// --
-// --
-// --
-// --
-// --
-  $, $$, scrollToBottom, playSound, burstParticles,
-  showXpFloat, showToast, getElementCenter,
-} from './utils.js';
+// [import]
+// [import]
+// [import]
+// [import]
+// [import]
+// [import]
+// [import]
+// [import]
 
 // ============================================================
 //  应用状态
