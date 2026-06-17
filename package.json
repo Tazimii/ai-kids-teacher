@@ -1,0 +1,9 @@
+{
+  "name": "ai-kids-teacher",
+  "version": "1.0.0",
+  "description": "小智的AI教室 - 面向7-13岁儿童的AI入门教学智能体",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
