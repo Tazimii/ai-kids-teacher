@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>小智的AI教室</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- Favicon (小智emoji作为临时图标) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+
+  <!-- ========== 年龄选择覆盖层 ========== -->
+  <div id="ageGate" class="overlay active">
+    <div class="age-gate-card">
+      <div class="age-gate-icon">🤖</div>
+      <h1>欢迎来到小智的AI教室！</h1>
+      <p class="age-gate-subtitle">我是小智，很高兴认识你！<br>在开始之前，先告诉我你多大吧~</p>
+      <div class="age-options">
+        <button class="age-btn junior" data-age="junior">
+          <span class="age-emoji">🌟</span>
+          <span class="age-label">7 - 9 岁</span>
+          <span class="age-desc">AI初探者</span>
+        </button>
+        <button class="age-btn senior" data-age="senior">
+          <span class="age-emoji">🚀</span>
+          <span class="age-label">10 - 13 岁</span>
+          <span class="age-desc">AI探险家</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 主应用容器 ========== -->
+  <div id="app" class="app-container">
+
+    <!-- 顶部状态栏 -->
+    <header id="topBar" class="top-bar">
+      <div class="top-bar-left">
+        <span id="levelBadge" class="level-badge">Lv.1</span>
+        <span id="titleLabel" class="title-label">AI小萌新</span>
+      </div>
+      <div class="top-bar-center">
+        <div id="xpBarWrap" class="xp-bar-wrap">
+          <div id="xpBar" class="xp-bar" style="width: 0%"></div>
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <span id="starCount" class="star-count">⭐ 0</span>
+      </div>
+    </header>
+
+    <!-- 小智角色展示区 -->
+    <section id="characterArea" class="character-area">
+      <canvas id="characterCanvas" width="240" height="240"></canvas>
+      <div id="characterSpeech" class="character-speech hidden"></div>
+    </section>
+
+    <!-- 对话/内容区域 -->
+    <main id="chatArea" class="chat-area">
+      <div id="messagesContainer" class="messages-container">
+        <!-- 消息会动态插入这里 -->
+      </div>
+
+      <!-- 互动组件容器 -->
+      <div id="interactionContainer" class="interaction-container hidden"></div>
+    </main>
+
+    <!-- 输入区域 -->
+    <footer id="inputArea" class="input-area">
+      <button id="voiceBtn" class="input-btn voice-btn" title="语音输入">🎤</button>
+      <input
+        id="messageInput"
+        class="message-input"
+        type="text"
+        placeholder="和小智说点什么吧..."
+        autocomplete="off"
+      >
+      <button id="sendBtn" class="input-btn send-btn" title="发送">➤</button>
+    </footer>
+
+    <!-- 底部导航 -->
+    <nav id="bottomNav" class="bottom-nav">
+      <button class="nav-btn active" data-tab="chat">
+        <span class="nav-icon">💬</span>
+        <span class="nav-label">对话</span>
+      </button>
+      <button class="nav-btn" data-tab="courses">
+        <span class="nav-icon">📚</span>
+        <span class="nav-label">课程</span>
+      </button>
+      <button class="nav-btn" data-tab="achievements">
+        <span class="nav-icon">🏆</span>
+        <span class="nav-label">成就</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ========== 音效（预加载） ========== -->
+  <audio id="sfxCorrect" preload="auto" src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACAf39/f4B/f3+AgH9/f3+AgH9/f3+AgH9/f4CAf39/f4CAf39/gIB/f39/gIB/f3+AgH9/f3+AgH9/f3+AgH9/f4B/f39/gH9/f4B/f39/gH9/f4B/f3+AgH9/f4B/f3+AgH9/f4B/f3+AgH9/f4B/f3+AgH9/f4B/f3+AgH9/f4CA"></audio>
+  <audio id="sfxLevelUp" preload="auto" src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACAf39/f4B/f3+AgH9/f3+AgH9/f3+AgH9/f4CAf39/f4CAf39/gIB/f39/gIB/f3+AgH9/f3+AgH9/f3+AgH9/f4B/f39/gH9/f4B/f39/gH9/f4B/f3+AgH9/f4B/f3+AgH9/f4B/f3+AgH9/f4B/f3+AgH9/f4B/f3+AgH9/f4CA"></audio>
+
+  <!-- ========== JavaScript 模块 ========== -->
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>

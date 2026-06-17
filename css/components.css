@@ -1,0 +1,392 @@
+/* ============================================
+   小智的AI教室 — 组件样式
+   ============================================ */
+
+/* ---- 年龄选择卡片 ---- */
+.age-gate-card {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  padding: 36px 28px;
+  text-align: center;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: var(--shadow-lg);
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.age-gate-icon {
+  font-size: 64px;
+  margin-bottom: 12px;
+  animation: characterIdle 2s ease-in-out infinite;
+}
+
+.age-gate-card h1 {
+  font-size: var(--font-size-xl);
+  color: var(--blue-600);
+  margin-bottom: 8px;
+}
+
+.age-gate-subtitle {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.age-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.age-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border: 3px solid var(--divider);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  cursor: pointer;
+  transition: all 0.25s;
+  font-family: var(--font-stack);
+  text-align: left;
+}
+
+.age-btn:hover,
+.age-btn:active {
+  border-color: var(--blue-400);
+  background: var(--blue-100);
+  transform: translateX(4px);
+}
+
+.age-btn .age-emoji {
+  font-size: 36px;
+  flex-shrink: 0;
+}
+
+.age-btn .age-label {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.age-btn .age-desc {
+  font-size: var(--font-size-sm);
+  color: var(--text-hint);
+  margin-left: auto;
+}
+
+/* ---- 测验卡片 ---- */
+.quiz-card {
+  background: var(--surface);
+  border: 2px solid var(--blue-200);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  animation: cardFlipIn 0.4s ease-out;
+}
+
+.quiz-question {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--blue-700);
+  margin-bottom: 12px;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quiz-option {
+  padding: 12px 16px;
+  border: 2px solid var(--divider);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-family: var(--font-stack);
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.quiz-option:active {
+  transform: scale(0.98);
+}
+
+.quiz-option.correct {
+  border-color: #4CAF50;
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.quiz-option.wrong {
+  border-color: #EF5350;
+  background: #FFEBEE;
+  color: #C62828;
+  animation: shake 0.4s ease-in-out;
+}
+
+.quiz-option:disabled {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.quiz-explanation {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--yellow-200);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+/* ---- 成就/徽章 ---- */
+.badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  min-width: 72px;
+}
+
+.badge-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.badge-icon.earned {
+  background: linear-gradient(135deg, var(--yellow-200), var(--yellow-400));
+  box-shadow: 0 2px 8px rgba(253, 216, 53, 0.4);
+}
+
+.badge-icon.locked {
+  background: var(--divider);
+  filter: grayscale(1);
+  opacity: 0.4;
+}
+
+.badge-name {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* ---- 游戏：拖拽分类 ---- */
+.drag-game {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+}
+
+.drag-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.drag-item {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  cursor: grab;
+  background: var(--surface);
+  border: 2px solid var(--divider);
+  transition: all 0.2s;
+  touch-action: none;
+}
+
+.drag-item:active {
+  cursor: grabbing;
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md);
+}
+
+.drag-zones {
+  display: flex;
+  gap: 12px;
+}
+
+.drag-zone {
+  flex: 1;
+  min-height: 80px;
+  border: 3px dashed var(--blue-200);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  transition: all 0.2s;
+  gap: 4px;
+}
+
+.drag-zone-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.drag-zone.drag-over {
+  border-color: var(--blue-400);
+  background: var(--blue-100);
+  transform: scale(1.03);
+}
+
+.drag-zone .dropped-item {
+  font-size: 28px;
+  margin: 2px;
+}
+
+/* ---- 课程卡片 ---- */
+.course-card {
+  background: var(--surface);
+  border: 2px solid var(--divider);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.course-card:active {
+  border-color: var(--blue-400);
+  transform: scale(0.98);
+}
+
+.course-card.completed {
+  border-color: #4CAF50;
+  background: #F1F8E9;
+}
+
+.course-card .course-num {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--blue-100);
+  color: var(--blue-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+}
+
+.course-card.completed .course-num {
+  background: #4CAF50;
+  color: #fff;
+}
+
+.course-card .course-info {
+  flex: 1;
+}
+
+.course-card .course-title {
+  font-weight: 600;
+  font-size: var(--font-size-base);
+}
+
+.course-card .course-meta {
+  font-size: var(--font-size-xs);
+  color: var(--text-hint);
+  margin-top: 2px;
+}
+
+.course-card .course-status {
+  font-size: 20px;
+}
+
+/* ---- PF (Party Face / 粒子效果) ---- */
+.particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 200;
+  animation: particleBurst 0.8s ease-out forwards;
+}
+
+/* ---- XP飘字 ---- */
+.xp-float {
+  position: fixed;
+  pointer-events: none;
+  z-index: 200;
+  font-weight: 700;
+  color: var(--orange-400);
+  font-size: var(--font-size-sm);
+  animation: xpFloat 1.2s ease-out forwards;
+}
+
+/* ---- Toast ---- */
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-primary);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  z-index: 300;
+  animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---- 休息提醒 ---- */
+.break-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 71, 161, 0.92);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  color: #fff;
+  text-align: center;
+  padding: 40px;
+}
+
+.break-overlay .break-icon {
+  font-size: 72px;
+  animation: characterIdle 2s ease-in-out infinite;
+}
+
+.break-overlay h2 {
+  font-size: var(--font-size-xxl);
+  margin: 16px 0 8px;
+}
+
+.break-overlay p {
+  font-size: var(--font-size-base);
+  opacity: 0.8;
+  line-height: 1.7;
+}
+
+/* ---- Canvas 游戏通用 ---- */
+.game-canvas {
+  border-radius: var(--radius-lg);
+  background: #fff;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+/* ---- 隐藏 ---- */
+.hidden {
+  display: none !important;
+}
