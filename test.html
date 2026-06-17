@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>TEST</title></head>
+<body>
+<h1>JS测试</h1>
+<button id="btn" style="font-size:30px;padding:20px;">点我</button>
+<div id="out" style="font-size:20px;margin:20px;color:red;"></div>
+<script>
+document.title = 'JS_OK';
+document.getElementById('out').textContent = '脚本已执行';
+document.getElementById('btn').onclick = function() {
+  this.textContent = '点击成功!';
+  this.style.background = 'green';
+  document.getElementById('out').textContent = '按钮点击事件触发!';
+};
+</script>
+</body>
+</html>
